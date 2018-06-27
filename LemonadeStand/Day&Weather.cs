@@ -9,23 +9,23 @@ namespace LemonadeStand
         private int daileyHours;
         private float localWeather; //API goes here
 
-        public float LocalWeather
+        public double LocalWeather
         {
             get { return localWeather; }
-            set { localWeather = value; }
+            //set { localWeather = value; }
         }
 
 
-        public float DaysCount
+        public double DaysCount
         {
             get { return daysCount; }
-            set { localWeather = value; }
+            //set { localWeather = value; }
         }
 
         public Day_Weather()
         {
+
         }
-
-
     }
-}
+
+} 

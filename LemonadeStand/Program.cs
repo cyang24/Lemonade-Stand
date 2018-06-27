@@ -7,8 +7,9 @@ namespace LemonadeStand
     {
         public static void Main(string[] args)
         {
-            Console.WriteLine("What is your lemonade stands name?\n");
-            Player player1 = new Seller();
+            Game newGame = new Game();
+            newGame.GetType();
+           
 
 
         

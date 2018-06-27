@@ -1,21 +1,23 @@
 ﻿<Properties StartupConfiguration="{DA3A84AD-267A-4A36-A1EA-E5A6E82282C3}|Default">
   <MonoDevelop.Ide.ItemProperties.LemonadeStand PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="LemonadeStand/Day&amp;Weather.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="LemonadeStand/Recipe.cs">
     <Files>
-      <File FileName="LemonadeStand/Program.cs" Line="18" Column="1" />
-      <File FileName="LemonadeStand/Player.cs" Line="30" Column="10" />
-      <File FileName="LemonadeStand/Seller.cs" Line="22" Column="10" />
-      <File FileName="LemonadeStand/Store.cs" Line="220" Column="37" />
-      <File FileName="LemonadeStand/Customer.cs" Line="14" Column="9" />
-      <File FileName="LemonadeStand/Day&amp;Weather.cs" Line="22" Column="42" />
-      <File FileName="LemonadeStand/Inventory.cs" Line="19" Column="10" />
+      <File FileName="LemonadeStand/Program.cs" Line="11" Column="29" />
+      <File FileName="LemonadeStand/Game.cs" Line="28" Column="6" />
+      <File FileName="LemonadeStand/Player.cs" Line="14" Column="33" />
+      <File FileName="LemonadeStand/Store.cs" Line="10" Column="47" />
+      <File FileName="LemonadeStand/Customer.cs" Line="2" Column="1" />
+      <File FileName="LemonadeStand/Day&amp;Weather.cs" Line="23" Column="10" />
+      <File FileName="LemonadeStand/Inventory.cs" Line="26" Column="38" />
+      <File FileName="LemonadeStand/Recipe.cs" Line="11" Column="31" />
+      <File FileName="LemonadeStand/Wallet.cs" Line="28" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="LemonadeStand" expanded="True">
             <Node name="LemonadeStand" expanded="True">
-              <Node name="Day&amp;Weather.cs" selected="True" />
+              <Node name="Recipe.cs" selected="True" />
             </Node>
           </Node>
         </State>

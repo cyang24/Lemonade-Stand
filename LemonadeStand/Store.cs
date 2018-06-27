@@ -5,14 +5,7 @@ namespace LemonadeStand
 {
     public class Store
     {
-        PlayerClass player = new SellerClass();
-
-        public double PlayerMoney
-        {
-            get { return playerMoney; }
-            set { playerMoney = value; }
-        }
-
+        public Player player = new Player();
         public double itemCost;
         Inventory inventory = new Inventory();
 
@@ -22,30 +15,27 @@ namespace LemonadeStand
             BuyMoreItems();
         }
 
-        public double BuyForInventory()
+        public void BuyForInventory()
         {
             Console.WriteLine("\nWhat would you like to purchase? \na) cups \nb) lemons \nc) sugar \nd) ice\n");
             string userIput = Console.ReadLine();
+
 
             switch (userIput)
             {
                 case "a":
                     BuyCups();
-                    BuyMoreItems();
                     break;
 
                 case "b":
                     BuyLemons();
-                    BuyMoreItems();
                     break;
 
                 case "c":
                     BuySugar();
-                    BuyMoreItems();
                     break;
                 case "d":
                     BuyIce();
-                    BuyMoreItems();
                     break;
 
                 default:
@@ -53,20 +43,13 @@ namespace LemonadeStand
                     BuyForInventory();
                     break;
             }
-
-            return PlayerMoney;
         }
 
         public void DisplayInventoryAndBalance()
         {
-            Console.WriteLine($"\nCurrent Balnce: $ {PlayesrMoney} \n\nCurrent Inventory:\ncups: {inventory.cups.Count} \nlemons: {inventory.lemons.Count} \nsugar: { inventory.sugar.Count} \nice cubes: { inventory.ice.Count}");
+            Console.WriteLine($"\nCurrent Balnce: $ {player.wallet.PlayerMoney} \n\nCurrent Inventory:\ncups: {inventory.cups.Count} \nlemons: {inventory.lemons.Count} \nsugar: { inventory.sugar.Count} \nice cubes: { inventory.ice.Count}\n\n");
         }
 
-        public double CalculatePlayerPurchase(double PlayerMoney, double itemCost)
-        {
-            PlayerMoney = PlayerMoney - itemCost;
-            return PlayerMoney;
-        }
 
         public void BuyMoreItems()
         {   
@@ -94,15 +77,15 @@ namespace LemonadeStand
 
             if (int.Parse(amountToBuy) == 25)
             {
-                Console.WriteLine("Your current balance is " + "$" + CalculatePlayerPurchase(PlayerMoney, 0.82));
+                Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(0.25));
             }
             else if (int.Parse(amountToBuy) == 50)
             {
-                Console.WriteLine("Your current balance is " + "$" + CalculatePlayerPurchase(PlayerMoney, 1.54));
+                Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(1.54));
             }
             else if (int.Parse(amountToBuy) == 100)
             {
-                Console.WriteLine("Your current balance is " + "$" + CalculatePlayerPurchase(PlayerMoney, 2.88));
+                Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(2.88));
             }
             else
             {
@@ -129,15 +112,15 @@ namespace LemonadeStand
 
             if (int.Parse(amountToBuy) == 10)
             {
-                Console.WriteLine("Your current balance is " + "$" + CalculatePlayerPurchase(PlayerMoney, 0.96));
+                Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(0.96));
             }
             else if (int.Parse(amountToBuy) == 30)
             {
-                Console.WriteLine("Your current balance is " + "$" + CalculatePlayerPurchase(PlayerMoney, 2.39));
+                Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(2.39));
             }
             else if (int.Parse(amountToBuy) == 75)
             {
-                Console.WriteLine("Your current balance is " + "$" + CalculatePlayerPurchase(PlayerMoney, 4.43));
+                Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(4.43));
             }
             else{
                Console.WriteLine("Invalid Entry Try Again.");
@@ -162,15 +145,15 @@ namespace LemonadeStand
 
             if (int.Parse(amountToBuy) == 8)
             {
-                Console.WriteLine("Your current balance is " + "$" + CalculatePlayerPurchase(PlayerMoney, 0.60));
+                Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(0.60));
             }
             else if (int.Parse(amountToBuy) == 20)
             {
-                Console.WriteLine("Your current balance is " + "$" + CalculatePlayerPurchase(PlayerMoney, 1.73));
+                Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(1.73));
             }
             else if (int.Parse(amountToBuy) == 48)
             {
-                Console.WriteLine("Your current balance is " + "$" + CalculatePlayerPurchase(PlayerMoney, 3.42));
+                Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(3.42));
             }
             else
             {
@@ -199,15 +182,15 @@ namespace LemonadeStand
 
             if (int.Parse(amountToBuy) == 100)
             {
-                Console.WriteLine("Your current balance is " + "$" + CalculatePlayerPurchase(PlayerMoney, 0.60));
+                Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(0.75));
             }
             else if (int.Parse(amountToBuy) == 250)
             {
-                Console.WriteLine("Your current balance is " + "$" + CalculatePlayerPurchase(PlayerMoney, 1.73));
+                Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(2.11));
             }
             else if (int.Parse(amountToBuy) == 500)
             {
-                Console.WriteLine("Your current balance is " + "$" + CalculatePlayerPurchase(PlayerMoney, 3.42));
+                Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(3.96));
             }
             else
             {

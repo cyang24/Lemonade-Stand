@@ -35,7 +35,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Player.cs" />
-    <Compile Include="Seller.cs" />
     <Compile Include="Customer.cs" />
     <Compile Include="Day&amp;Weather.cs" />
     <Compile Include="Store.cs" />
@@ -45,6 +44,8 @@
     <Compile Include="Cups.cs" />
     <Compile Include="Ice.cs" />
     <Compile Include="Inventory.cs" />
+    <Compile Include="Wallet.cs" />
+    <Compile Include="Recipe.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

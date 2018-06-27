@@ -3,8 +3,11 @@ using System.Collections.Generic;
 
 namespace LemonadeStand
 {
-    public abstract class Player
-    {
+    public class Player
+    {   
+        public Recipe recipe = new Recipe();
+        public Wallet wallet = new Wallet();
+        public Inventory inventory = new Inventory();
 
         protected string playerName = (Console.ReadLine());
 
@@ -12,6 +15,7 @@ namespace LemonadeStand
         {
             get { return playerName; }
             set { playerName = value; }
+
         }
 
         protected int recipeRating;
