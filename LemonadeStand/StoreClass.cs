@@ -5,43 +5,10 @@ namespace LemonadeStand
 {
     public class StoreClass
     {
-        //public int upadatedLemonsInventory;
-        //public int upadatedSugarInventory;
-        //public int upadatedCupsInventory;
-        //public int upadatedIceInventory;
         private double playerMoney = 20;
         public double itemCost;
-        List<LemonClass> lemons;
-       
+        InventoryClass newInventory = new InventoryClass();
 
-        private int lemonsCount = 0;
-        private int sugarsCount = 0;
-        private int cupsCount = 0;
-        private int iceCount = 0;
-
-        public int LemonsCount
-        {
-            get { return lemonsCount; }
-            set { lemonsCount = value; }
-        }
-
-        public int SugarsCount
-        {
-            get { return sugarsCount; }
-            set { sugarsCount = value; }
-        }
-
-        public int CupsCount
-        {
-            get { return cupsCount; }
-            set { cupsCount = value; }
-        }
-
-        public int IceCount
-        {
-            get { return iceCount; }
-            set { iceCount = value; }
-        }
         public double PlayerMoney
         {
             get { return playerMoney; }
@@ -91,12 +58,7 @@ namespace LemonadeStand
 
         public void DisplayInventoryAndBalance()
         {
-            Console.WriteLine("\nCurrent Balnce: $" + PlayerMoney);
-            Console.WriteLine("\nCurrent Inventory:");
-            Console.WriteLine("\ncups: " + CupsCount);
-            Console.WriteLine("\nlemons: " + LemonsCount);
-            Console.WriteLine("\nice sugar: " + SugarsCount);
-            Console.WriteLine("\nice cubes: " + IceCount);
+            Console.WriteLine($"\nCurrent Balnce: $" {PlayerMoney} "\nCurrent Inventory \n cups" {newInventory.cups.Count} "\nlemons: " {newInventory.lemons.Count} "\nice sugar: " { newInventory.sugar.Count} "\nice cubes: " { newInventory.ice.Count});
         }
 
         public double CalculatePlayerPurchase(double PlayerMoney, double itemCost)
@@ -124,191 +86,139 @@ namespace LemonadeStand
 
         }
 
-        public double BuyCups()
+        public void BuyCups()
         {
-            Console.WriteLine("How many cups would you like to buy? \n 25 cups for 82¢ \n 50 cups for $1.54 \n 75 cups for $2.88 \n");
+            Console.WriteLine("How many cups would you like to buy? \n 25 for 82¢ \n 50 for $1.54 \n 100 for $2.88?");
             string amountToBuy = Console.ReadLine().ToLower();
 
-            switch (amountToBuy)
+            for (int i = 0; i < int.Parse(amountToBuy); i++)
             {
-                case "25":
-                    CupsCount = 25 + CupsCount;
-                    Console.WriteLine("You now have " + CupsCount + " cups");
-                    Console.WriteLine("Your current balance is " + "$" + CalculatePlayerPurchase(PlayerMoney, 0.82));
-                    BuyMoreItems();
-                    break;
+                CupsClass cups = new CupsClass();
+                newInventory.cups.Add(cups);
+            }
+            Console.WriteLine("You now have " + newInventory.cups.Count + " cups");
 
-                case "50":
-
-                    CupsCount = 50 + CupsCount;
-                    Console.WriteLine("You now have " + CupsCount + " cups");
-                    Console.WriteLine("Your current balance is " + "$" + CalculatePlayerPurchase(PlayerMoney, 1.54));
-                    BuyMoreItems();
-                    break;
-
-                case "75":
-
-                    CupsCount = 75 + CupsCount;
-                    Console.WriteLine("You now have " + CupsCount + " cups");
-                    Console.WriteLine("Your current balance is " + "$" + CalculatePlayerPurchase(PlayerMoney, 2.88));
-                    BuyMoreItems();
-                    break;
-
-                default:
-                    Console.WriteLine("Invalid Entry Try Again.");
-                    BuyCups();
-                    break;
+            if (int.Parse(amountToBuy) == 25)
+            {
+                Console.WriteLine("Your current balance is " + "$" + CalculatePlayerPurchase(PlayerMoney, 0.82));
+            }
+            else if (int.Parse(amountToBuy) == 50)
+            {
+                Console.WriteLine("Your current balance is " + "$" + CalculatePlayerPurchase(PlayerMoney, 1.54));
+            }
+            else if (int.Parse(amountToBuy) == 100)
+            {
+                Console.WriteLine("Your current balance is " + "$" + CalculatePlayerPurchase(PlayerMoney, 2.88));
+            }
+            else
+            {
+                Console.WriteLine("Invalid Entry Try Again.");
             }
 
-            return PlayerMoney;
+            BuyMoreItems();
 
         }
 
-        public double BuyLemons()
+
+        public void BuyLemons()
         {
             Console.WriteLine("How many lemons would you like to buy? \n 10 for 96¢ \n 30 for $2.39 \n 75 for $4.43?");
             string amountToBuy = Console.ReadLine().ToLower();
 
-            switch (amountToBuy)
+            for (int i = 0; i < int.Parse(amountToBuy); i++)
             {
-                case "10":
+                LemonClass lemon = new LemonClass();
+                newInventory.lemons.Add(lemon);
+            }
+            Console.WriteLine("You now have " + newInventory.lemons.Count + " lemons");
 
-                    LemonsCount = 10 + LemonsCount;
-                    Console.WriteLine("You now have " + LemonsCount + " lemons");
-                    Console.WriteLine("Your current balance is " + "$" + CalculatePlayerPurchase(PlayerMoney, 0.96));
-                    BuyMoreItems();
-                    break;
-
-                case "30":
-
-                    LemonsCount = 30 + LemonsCount;
-                    Console.WriteLine("You now have " + LemonsCount + " lemons");
-                    Console.WriteLine("Your current balance is " + "$" + CalculatePlayerPurchase(PlayerMoney, 2.39));
-                    BuyMoreItems();
-                    break;
-
-                case "75":
-
-                    LemonsCount = 75 + LemonsCount;
-                    Console.WriteLine("You now have " + LemonsCount + " lemons");
-                    Console.WriteLine("Your current balance is " + "$" + CalculatePlayerPurchase(PlayerMoney, 4.43));
-                    BuyMoreItems();
-                    break;
-
-                default:
-                    Console.WriteLine("Invalid Entry Try Again.");
-                    BuyCups();
-                    break;
+            if (int.Parse(amountToBuy) == 10)
+            {
+                Console.WriteLine("Your current balance is " + "$" + CalculatePlayerPurchase(PlayerMoney, 0.96));
+            }
+            else if (int.Parse(amountToBuy) == 30)
+            {
+                Console.WriteLine("Your current balance is " + "$" + CalculatePlayerPurchase(PlayerMoney, 2.39));
+            }
+            else if (int.Parse(amountToBuy) == 75)
+            {
+                Console.WriteLine("Your current balance is " + "$" + CalculatePlayerPurchase(PlayerMoney, 4.43));
+            }
+            else{
+               Console.WriteLine("Invalid Entry Try Again.");
             }
 
-            return PlayerMoney;
+            BuyMoreItems();
+           
         }
 
-
-        public double BuySugar()
+        public void BuySugar()
         {
-            Console.WriteLine("How many cups would you like to buy? \n  8 cups for 60¢ \n 20 cups for $1.73 \n 48 cups for $3.42\n");
+            Console.WriteLine("How much sugar would you like to buy? \n 8 cups for 60¢ \n 20 cups for $1.73 \n 48 cups for $3.42?");
             string amountToBuy = Console.ReadLine().ToLower();
 
-            switch (amountToBuy)
+            for (int i = 0; i < int.Parse(amountToBuy); i++)
             {
-                case "8":
-                    SugarsCount = 8 + SugarsCount;
-                    Console.WriteLine("You now have " + SugarsCount + " cups of sugar");
-                    Console.WriteLine("Your current balance is " + "$" + CalculatePlayerPurchase(PlayerMoney, 0.60));
-                    BuyMoreItems();
-                    break;
+                SugarClass sugar = new SugarClass();
+                newInventory.sugar.Add(sugar);
+            }
+            Console.WriteLine("You now have " + newInventory.sugar.Count + " cups of sugar");
 
-                case "20":
-
-                    SugarsCount = 20 + SugarsCount;
-                    Console.WriteLine("You now have " + SugarsCount + " cups of sugar");
-                    Console.WriteLine("Your current balance is " + "$" + CalculatePlayerPurchase(PlayerMoney, 1.73));
-                    BuyMoreItems();
-                    break;
-
-                case "48":
-
-                    SugarsCount = 48 + SugarsCount;
-                    Console.WriteLine("You now have " + SugarsCount + " cups of sugar");
-                    Console.WriteLine("Your current balance is " + "$" + CalculatePlayerPurchase(PlayerMoney, 3.42));
-                    BuyMoreItems();
-                    break;
-
-                default:
-                    Console.WriteLine("Invalid Entry Try Again.");
-                    BuyCups();
-                    break;
+            if (int.Parse(amountToBuy) == 8)
+            {
+                Console.WriteLine("Your current balance is " + "$" + CalculatePlayerPurchase(PlayerMoney, 0.60));
+            }
+            else if (int.Parse(amountToBuy) == 20)
+            {
+                Console.WriteLine("Your current balance is " + "$" + CalculatePlayerPurchase(PlayerMoney, 1.73));
+            }
+            else if (int.Parse(amountToBuy) == 48)
+            {
+                Console.WriteLine("Your current balance is " + "$" + CalculatePlayerPurchase(PlayerMoney, 3.42));
+            }
+            else
+            {
+                Console.WriteLine("Invalid Entry Try Again.");
             }
 
-            return PlayerMoney;
+            BuyMoreItems();
+
         }
 
-            public double BuyIce()
+        public void BuyIce()
+        {
+            Console.WriteLine("How much sugar would you like to buy? \n 100 cups for 75¢ \n 250 cups for $2.11 \n 500 cups $3.69?");
+            string amountToBuy = Console.ReadLine().ToLower();
+
+            for (int i = 0; i < int.Parse(amountToBuy); i++)
             {
-                Console.WriteLine("How much Ice would you like to buy? \n  100 bags for 75¢ \n 250 bags for $2.11 \n 500 bags for $3.69\n");
-                string amountToBuy = Console.ReadLine().ToLower();
+                IceClass ice = new IceClass();
+                newInventory.ice.Add(ice);
+            }
+            Console.WriteLine("You now have " + newInventory.sugar.Count + " cups of ice");
 
-                switch (amountToBuy)
-                {
-                    case "100":
-                        SugarsCount = 100 + SugarsCount;
-                        Console.WriteLine("You now have " + SugarsCount + " bags of sugar");
-                        Console.WriteLine("Your current balance is " + "$" + CalculatePlayerPurchase(PlayerMoney, 0.75));
-                        BuyMoreItems();
-                        break;
+            if (int.Parse(amountToBuy) == 8)
+            {
+                Console.WriteLine("Your current balance is " + "$" + CalculatePlayerPurchase(PlayerMoney, 0.60));
+            }
+            else if (int.Parse(amountToBuy) == 20)
+            {
+                Console.WriteLine("Your current balance is " + "$" + CalculatePlayerPurchase(PlayerMoney, 1.73));
+            }
+            else if (int.Parse(amountToBuy) == 48)
+            {
+                Console.WriteLine("Your current balance is " + "$" + CalculatePlayerPurchase(PlayerMoney, 3.42));
+            }
+            else
+            {
+                Console.WriteLine("Invalid Entry Try Again.");
+            }
 
-                    case "250":
+            BuyMoreItems();
 
-                        SugarsCount = 250 + SugarsCount;
-                        Console.WriteLine("You now have " + SugarsCount + " bags of sugar");
-                        Console.WriteLine("Your current balance is " + "$" + CalculatePlayerPurchase(PlayerMoney, 2.11));
-                        BuyMoreItems();
-                        break;
-
-                    case "500":
-
-                        SugarsCount = 500 + SugarsCount;
-                        Console.WriteLine("You now have " + SugarsCount + " bags of sugar");
-                        Console.WriteLine("Your current balance is " + "$" + CalculatePlayerPurchase(PlayerMoney, 3.69));
-                        BuyMoreItems();
-                        break;
-
-                    default:
-                        Console.WriteLine("Invalid Entry Try Again.");
-                        BuyCups();
-                        break;
-                }
-
-                return PlayerMoney;
         }
 
-        //public void CreateLemon
-        //    {
-        //        lemons = new List<LemonClass>; 
 
-        //        for (int i, int = 10, i++)
-        //        {
-        //        lemons += int i;
-        //        }
-        //    }
-        //}
-
-        //public void SetInventoryList()
-        //{
-        //    List<string> inventoryItems = new List<string>();
-
-        //    inventoryItems.Add ("Lemonade");
-        //    inventoryItems.Add ("Sugar");
-        //    inventoryItems.Add ("Ice");
-        //    inventoryItems.Add("Cups");
-
-        //}
-
-        //public void GetInventoryList()
-        //{
-        //    List<String> inventoryList = SetInventoryList();
-        //}
 
     }
 }

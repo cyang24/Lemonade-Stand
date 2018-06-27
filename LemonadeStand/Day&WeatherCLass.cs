@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace LemonadeStand
 {
     public class Day_WeatherCLass
@@ -17,7 +19,7 @@ namespace LemonadeStand
         public float DaysCount
         {
             get { return daysCount; }
-            set { localWeather = 7; }
+            set { localWeather = value; }
         }
 
         public Day_WeatherCLass()
