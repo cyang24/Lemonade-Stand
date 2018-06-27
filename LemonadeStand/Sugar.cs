@@ -1,9 +1,9 @@
 ﻿using System;
 namespace LemonadeStand
 {
-    public class IceClass
+    public class Sugar
     {
-        public IceClass()
+        public Sugar()
         {
         }
     }

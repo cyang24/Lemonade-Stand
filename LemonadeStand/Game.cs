@@ -1,11 +1,11 @@
 ﻿using System;
 namespace LemonadeStand
 {
-    public class GameClass
+    public class Game
     {   
       
 
-        public GameClass()
+        public Game()
         {
             
 

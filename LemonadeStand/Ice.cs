@@ -1,9 +1,9 @@
 ﻿using System;
 namespace LemonadeStand
 {
-    public class CupsClass
+    public class Ice
     {
-        public CupsClass()
+        public Ice()
         {
         }
     }

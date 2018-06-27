@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LemonadeStand
 {
-    public abstract class PlayerClass
+    public abstract class Player
     {
 
         protected string playerName = (Console.ReadLine());
@@ -23,7 +23,7 @@ namespace LemonadeStand
         }
 
 
-        public PlayerClass()
+        public Player()
         {
             
 

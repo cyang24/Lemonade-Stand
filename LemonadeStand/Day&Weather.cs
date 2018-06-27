@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LemonadeStand
 {
-    public class Day_WeatherCLass
+    public class Day_Weather
     {
         private int daysCount;
         private int daileyHours;
@@ -22,7 +22,7 @@ namespace LemonadeStand
             set { localWeather = value; }
         }
 
-        public Day_WeatherCLass()
+        public Day_Weather()
         {
         }
 

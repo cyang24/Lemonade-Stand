@@ -3,10 +3,14 @@ using System.Collections.Generic;
 
 namespace LemonadeStand
 {
-    public class LemonClass
+    public class Customer : Player
     {
-        public LemonClass()
+        public Customer()
         {
+           
         }
+
+
+
     }
 }
