@@ -22,30 +22,22 @@ namespace LemonadeStand
 
         public void MakeRecipe()
         {
-
+            Console.WriteLine($"Your Current Recipe is: \nCups {cupsToUse} \nLemons {lemonsToUse } \nSugar {sugarToUse} \nIce {iceToUse}\n");
         }
 
 
-        public void UsedLemons()
+        public void UsedLemons(Inventory inventory)
         {
             Console.WriteLine("You have " + inventory.lemons.Count + "How many lemons would you like you use?");
+
             lemonsToUse = int.Parse(Console.ReadLine());
 
+            for (int i = 0; i < lemonsToUse; i++)
+            {
 
-
-         
-            //lemonsToUse = int.Parse(Console.ReadLine());
-
-            //for (int i = 0; i < lemonsToUse; i++)
-            //{
-            //    if (inventory.lemons[i].lemons == lemons)
-            //    {
-            //        inventory.lemons.RemoveAt(i);
-            //    }
-            //}
+                inventory.lemons.RemoveAt(i);
+            }
         }
-
-
     }   
 
 

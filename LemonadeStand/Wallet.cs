@@ -10,6 +10,7 @@ namespace LemonadeStand
             get { return playerMoney; }
             set { playerMoney = value; }
         }
+
         public Wallet()
         {
         }

@@ -3,7 +3,6 @@ namespace LemonadeStand
 {
     public class Game 
     {
-        
 
         public Game()
         {
@@ -17,9 +16,12 @@ namespace LemonadeStand
             Console.WriteLine("Good Luck " + player.PlayerName);
             Console.WriteLine("Let's Get Started!!");
             Store store = new Store();
+
             store.DisplayInventoryAndBalance();
             Console.WriteLine("All set " + player.PlayerName + "\nLet's go make some Lemonade\n\n");
-            //player.recipe.UsedLemons();
+            Day_Weather weather = new Day_Weather();
+           
+            player.SetPrice_Recipe();
             store.DisplayInventoryAndBalance();
 
 

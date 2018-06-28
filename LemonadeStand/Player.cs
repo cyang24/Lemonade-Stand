@@ -5,12 +5,12 @@ namespace LemonadeStand
 {
     public class Player
     {
-        public Recipe recipe = new Recipe();
+        
         public Wallet wallet = new Wallet();
         public Inventory inventory = new Inventory();
         private double lemonadePrice;
-
-        protected string playerName = (Console.ReadLine());
+        public Recipe recipe;
+        private string playerName = (Console.ReadLine());
 
 
         public double LemonadePrice
@@ -45,9 +45,9 @@ namespace LemonadeStand
         public void SetPrice_Recipe()
         {
             Console.WriteLine("What price would you like to sell your lemonade at?\n");
-            LemonadePrice = int.Parse(Console.ReadLine());
 
-            recipe.MakeRecipe();
+            LemonadePrice = int.Parse(Console.ReadLine());
+            Console.WriteLine(LemonadePrice);
         }
     }
 }
