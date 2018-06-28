@@ -5,8 +5,7 @@ namespace LemonadeStand
 {
     public class Inventory
     {   
-        public int lemonsToUse;
-
+     
         public List<Lemon> lemons;
         public List<Sugar> sugar;
         public List<Ice> ice;
@@ -19,20 +18,6 @@ namespace LemonadeStand
             ice = new List<Ice>();
             cups = new List<Cups>();
         }
-
-        public void UsedLemons()
-        {
-            Console.WriteLine("How many lemons would you like you use?");
-            lemonsToUse = int.Parse(Console.ReadLine());
-
-            for (int i = lemons.Count - 1; i >= lemonsToUse; i--)
-            {
-                lemons.RemoveAt(i);
-            }
-
-        }
-
-
 
     }
 

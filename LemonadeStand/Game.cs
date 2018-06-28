@@ -19,7 +19,7 @@ namespace LemonadeStand
             Store store = new Store();
             store.DisplayInventoryAndBalance();
             Console.WriteLine("All set " + player.PlayerName + "\nLet's go make some Lemonade\n\n");
-            player.inventory.UsedLemons();
+            //player.recipe.UsedLemons();
             store.DisplayInventoryAndBalance();
 
 
