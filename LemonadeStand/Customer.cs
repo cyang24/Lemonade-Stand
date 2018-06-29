@@ -3,34 +3,44 @@ using System.Collections.Generic;
 
 namespace LemonadeStand
 {
-    public class Customer
+    public class Customer : Day_Weather
     {
         public bool chanceToBuy = false;
-        Day_Weather newWeather = new Day_Weather();
+        Player player = new Player();
 
 
 
         public Customer()
         {
-
+            
         }
 
         public void CustomerWillBuy()
         {
-            newWeather.CalculateTodaysForecast();
-            newWeather.CalculateTodaysWeather();
+            CalculateTodaysForecast();
+            CalculateTodaysTemperature();
+            player.LemonadePriceRank();
 
-            if (newWeather.todaysForecast.ToLower() == "sunny")
+            if (todaysForecast.ToLower() == "sunny")
             {
-                if (newWeather.TodaysWeather >= 60 && newWeather.TodaysWeather <= 99)
-                {
+                if (TodaysTemperature >= 60 && TodaysTemperature <= 99)
+                {   
+                    if (player.lemonadeRank >= 0)
+                    {
+                        chanceToBuy = true;
+                    }
                     chanceToBuy = true;
                 }
             }
-            else if (newWeather.todaysForecast.ToLower() == "partly cloudy")
+            else if (todaysForecast.ToLower() == "partly cloudy")
             {
-                if (newWeather.TodaysWeather >= 75 && newWeather.TodaysWeather <= 99)
-                {
+                if (TodaysTemperature >= 75 && TodaysTemperature <= 99)
+                {   
+                    if (player.lemonadeRank >= 0 )
+                    {
+                        chanceToBuy = true; 
+                    }
+                        
                     chanceToBuy = true;
                 }
                 else
@@ -38,10 +48,14 @@ namespace LemonadeStand
                     chanceToBuy = false;
                 }
             }
-            else if (newWeather.todaysForecast.ToLower() == "overcast")
+            else if (todaysForecast.ToLower() == "overcast")
             {
-                if (newWeather.TodaysWeather >= 80 && newWeather.TodaysWeather <= 99)
-                {
+                if (TodaysTemperature >= 80 && TodaysTemperature <= 99)
+                {   
+                    if (player.lemonadeRank <= 2)
+                    {
+                        chanceToBuy = true;
+                    }
                     chanceToBuy = true;
                 }
                 else
@@ -50,31 +64,24 @@ namespace LemonadeStand
                 }
             }
 
-            else if (newWeather.todaysForecast.ToLower() == "rainy")
+            else if (todaysForecast.ToLower() == "rainy")
             {
-                if (newWeather.TodaysWeather >= 90 && newWeather.TodaysWeather <= 99)
-                {
+                if (TodaysTemperature >= 90 && TodaysTemperature <= 99)
+                {   
+                    if (player.lemonadeRank <= 1)
+                    {
+                        chanceToBuy = true;
+                    }
+
                     chanceToBuy = true;
                 }
                 else
                 {
                     chanceToBuy = false;
                 }
+            }
+
         }
 
-
-        //weather is good / High Weather / Good Forecast
-        // weahter chance
-
-
-
-        // price of lemonade 
-        // random price option
-
-
-
     }
-
-
-}
 }

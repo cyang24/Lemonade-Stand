@@ -9,15 +9,12 @@ namespace LemonadeStand
         public int cupsToUse;
         public int iceToUse;
         public int sugarToUse;
-        Inventory inventory = new Inventory();
+        Inventory inventory;
 
 
         public Recipe()
         {
 
-            MakeRecipe();
-
-           
         }
 
         public void MakeRecipe()
@@ -26,18 +23,18 @@ namespace LemonadeStand
         }
 
 
-        public void UsedLemons(Inventory inventory)
-        {
-            Console.WriteLine("You have " + inventory.lemons.Count + "How many lemons would you like you use?");
+        //public void UsedLemons(Inventory inventory)
+        //{
+        //    Console.WriteLine("You have " + inventory.lemons.Count + "How many lemons would you like you use?");
 
-            lemonsToUse = int.Parse(Console.ReadLine());
+        //    lemonsToUse = int.Parse(Console.ReadLine());
 
-            for (int i = 0; i < lemonsToUse; i++)
-            {
+        //    for (int i = 0; i < lemonsToUse; i++)
+        //    {
 
-                inventory.lemons.RemoveAt(i);
-            }
-        }
+        //        inventory.lemons.RemoveAt(i);
+        //    }
+        //}
     }   
 
 

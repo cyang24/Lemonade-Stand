@@ -5,20 +5,63 @@ namespace LemonadeStand
 {
     public class Inventory
     {   
-     
-        public List<Lemon> lemons;
-        public List<Sugar> sugar;
-        public List<Ice> ice;
-        public List<Cups> cups;
+        
+        public List<Lemon> lemonsInventory;
+        public List<Sugar> sugarInventoery;
+        public List<Ice> iceInventory;
+        public List<Cups> cupsInventory;
 
         public Inventory()
         {
-            lemons = new List<Lemon>();
-            sugar = new List<Sugar>();
-            ice = new List<Ice>();
-            cups = new List<Cups>();
+            lemonsInventory = new List<Lemon>();
+            sugarInventoery = new List<Sugar>();
+            iceInventory = new List<Ice>();
+            cupsInventory = new List<Cups>();
         }
 
+        public void BuyLemonsMath(string amountToBuy)
+        {
+            for (int i = 0; i < int.Parse(amountToBuy); i++)
+            {
+                Lemon lemon = new Lemon();
+                lemonsInventory.Add(lemon);
+            }
+
+                 Console.WriteLine("You now have " + lemonsInventory.Count + " lemons");
+        }
+
+       
+        public void BuyCupsMath(string amountToBuy)
+        {
+            for (int i = 0; i < int.Parse(amountToBuy); i++)
+            {   
+                Cups cups = new Cups();
+                cupsInventory.Add(cups);
+            }
+
+                Console.WriteLine("You now have " + cupsInventory.Count + " cups");
+        }
+
+        public void BuyIceMath(string amountToBuy)
+        {
+            for (int i = 0; i < int.Parse(amountToBuy); i++)
+            {
+                Ice ice = new Ice();
+                iceInventory.Add(ice);
+            }
+
+                Console.WriteLine("You now have " + iceInventory.Count + " cups of ice");
+        }
+
+        public void BuySugarMath(string amountToBuy)
+        {
+            for (int i = 0; i < int.Parse(amountToBuy); i++)
+            {
+                Sugar sugar = new Sugar();
+                sugarInventoery.Add(sugar);
+            }
+                Console.WriteLine("You now have " + sugarInventoery.Count + " cups of sugar");
+        }
     }
 
 }

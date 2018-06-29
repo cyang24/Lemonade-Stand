@@ -3,9 +3,9 @@ namespace LemonadeStand
 {
     public class Wallet
 
-    {   private double playerMoney = 20;
+    {   private decimal playerMoney = 20;
 
-        public double PlayerMoney
+        public decimal PlayerMoney
         {
             get { return playerMoney; }
             set { playerMoney = value; }
@@ -15,7 +15,7 @@ namespace LemonadeStand
         {
         }
 
-        public double AddToWallet(double itemsSold)
+        public decimal AddToWallet(decimal itemsSold)
         {
             PlayerMoney = PlayerMoney + itemsSold;
 
@@ -23,7 +23,7 @@ namespace LemonadeStand
 
         }
 
-        public double SubtractToWallet(double itemCost)
+        public decimal SubtractToWallet(decimal itemCost)
         {
             PlayerMoney = PlayerMoney - itemCost;
 

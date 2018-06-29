@@ -7,15 +7,18 @@ namespace LemonadeStand
     {
         private int daysCount;
         private int daileyHours;
-        private int todaysWeather; //API goes here?
+        private int todaysTemperature; //API goes here?
         public string todaysForecast;
+       
 
-        Random random = new Random();
 
-        public int TodayslWeather
+
+        Random rnd = new Random();
+
+        public int TodaysTemperature
         {
-            get { return todaysWeather; }
-            set { todaysWeather = value; }
+            get { return todaysTemperature; }
+            set { todaysTemperature = value; }
         }
 
 
@@ -27,17 +30,20 @@ namespace LemonadeStand
 
         public Day_Weather()
         {
-            TodaysForecast();
-            TodaysWeather();
-            Console.WriteLine("Today's Forcast is " + todaysForecast + " with a high of " + todaysWeather);
+            CalculateTodaysForecast();
+            CalculateTodaysTemperature();
+            Console.WriteLine("Today's Forcast is " + todaysForecast + " with a high of " + todaysTemperature + " degrees");
+            Customer customers = new Customer();
+            customers.CustomerWillBuy();
+
         }
 
-        public void TodaysWeather()
+        public void CalculateTodaysTemperature()
         {
-            todaysWeather = random.Next(55, 99);
+            todaysTemperature = rnd.Next(55, 99);
         }
 
-        public void TodaysForecast()
+        public void CalculateTodaysForecast()
         {   
             
             List<string> forecast = new List<string>();
@@ -47,7 +53,7 @@ namespace LemonadeStand
             forecast.Add("Sunny");
        
 
-            int numberGenerator = random.Next(1, 4);
+            int numberGenerator = rnd.Next(1, 4);
 
             switch (numberGenerator)
             {
@@ -65,6 +71,19 @@ namespace LemonadeStand
                     break;
             }
         }
+
+
+        //public void DailyListOfCustomer()
+        //{
+        //    int numberOfCustomers = rnd.Next(70, 120);
+
+        //    for (int i = 0; i<numberOfCustomers; i++)
+        //    {
+        //        Customer customer = new Customer();
+        //        customer.Add(rnd);
+        //    }
+
+        //}
 
     }
 

@@ -4,19 +4,17 @@ using System.Collections.Generic;
 namespace LemonadeStand
 {
     public class Store
-    {
-        public Player player = new Player();
-        public double itemCost;
-        Inventory inventory = new Inventory();
+    {   
+        public decimal itemCost;
         public string amountToBuy;
+        UserInterface Interface = new UserInterface();
+
 
         public Store()
         {
-            DisplayInventoryAndBalance();
-            BuyMoreItems();
         }
 
-        public void BuyForInventory()
+        public void BuyForInventory(Player player, Inventory inventory)
         {
             Console.WriteLine("\nWhat would you like to purchase? \na) cups \nb) lemons \nc) sugar \nd) ice\n");
             string userIput = Console.ReadLine();
@@ -25,214 +23,141 @@ namespace LemonadeStand
             switch (userIput)
             {
                 case "a":
-                    BuyCups();
+                    BuyCups(player, inventory);
                     break;
 
                 case "b":
-                    BuyLemons();
+                    BuyLemons(player, inventory);
                     break;
 
                 case "c":
-                    BuySugar();
+                    BuySugar(player, inventory);
                     break;
                 case "d":
-                    BuyIce();
+                    BuyIce(player, inventory);
                     break;
 
                 default:
                     Console.WriteLine("Invalid Entry Try Again.");
-                    BuyForInventory();
+                    BuyForInventory(player, inventory);
                     break;
             }
         }
 
-        public void DisplayInventoryAndBalance()
-        {
-            Console.WriteLine($"\nCurrent Balnce: $ {player.wallet.PlayerMoney} \n\nCurrent Inventory:\ncups: {inventory.cups.Count} \nlemons: {inventory.lemons.Count} \nsugar: { inventory.sugar.Count} \nice cubes: { inventory.ice.Count}\n\n");
-        }
-
-
-        public void BuyMoreItems()
-        {   
-            Console.WriteLine("\n");
-            Console.WriteLine("Would you like to buy something Yes or No");
-            string buyMore = Console.ReadLine().ToLower();
-            
-            if (buyMore == "yes" )
-            
-            {
-                BuyForInventory();
-            }
-
-            else 
-            {
-               DisplayInventoryAndBalance();
-            }
-
-        }
-
-        public void BuyCups()
+        public void BuyCups(Player player, Inventory inventory)
         {
             Console.WriteLine("How many cups would you like to buy? \n 25 for 82¢ \n 50 for $1.54 \n 100 for $2.88?");
-            amountToBuy = Console.ReadLine().ToLower();
+            amountToBuy = Console.ReadLine();
 
             if (int.Parse(amountToBuy) == 25)
             {
-                Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(0.25));
-                BuyCupsMath();
+                Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(Convert.ToDecimal(0.25)));
+                inventory.BuyCupsMath(amountToBuy);
             }
             else if (int.Parse(amountToBuy) == 50)
             {
-                Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(1.54));
-                BuyCupsMath();
+                Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(Convert.ToDecimal(1.54)));
+                inventory.BuyCupsMath(amountToBuy);
             }
             else if (int.Parse(amountToBuy) == 100)
             {
-                Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(2.88));
-                BuyCupsMath();
+                Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(Convert.ToDecimal(2.88)));
+                inventory.BuyCupsMath(amountToBuy);
             }
             else
             {
                 Console.WriteLine("Invalid Entry Try Again.");
-                BuyMoreItems();
             }
-
-            BuyMoreItems();
         }
 
 
-        public void BuyLemons()
+        public void BuyLemons(Player player, Inventory inventory)
         {
             Console.WriteLine("How many lemons would you like to buy? \n 10 for 96¢ \n 30 for $2.39 \n 75 for $4.43?");
-            amountToBuy = Console.ReadLine().ToLower();
+            amountToBuy = Console.ReadLine();
 
             if (int.Parse(amountToBuy) == 10)
             {
-                Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(0.96));
-                BuyLemonsMath();
+                Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(Convert.ToDecimal(0.96)));
+                inventory.BuyLemonsMath(amountToBuy);
             }
             else if (int.Parse(amountToBuy) == 30)
             {
-                Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(2.39));
-                BuyLemonsMath();
+                Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(Convert.ToDecimal(2.39)));
+                inventory.BuyLemonsMath(amountToBuy);
             }
             else if (int.Parse(amountToBuy) == 75)
             {
-                Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(4.43));
-                BuyLemonsMath();
+                Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(Convert.ToDecimal(4.43)));
+                inventory.BuyLemonsMath(amountToBuy);
             }
             else{
                Console.WriteLine("Invalid Entry Try Again.");
-               BuyMoreItems();
             }
-
-            BuyMoreItems();
         }
 
-        public void BuySugar()
+        public void BuySugar(Player player, Inventory inventory)
         {
             Console.WriteLine("How much sugar would you like to buy? \n 8 cups for 60¢ \n 20 cups for $1.73 \n 48 cups for $3.42?");
             amountToBuy = Console.ReadLine().ToLower();
 
             if (int.Parse(amountToBuy) == 8)
             {
-                Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(0.60));
-                BuySugarMath();
+                Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(Convert.ToDecimal(0.60)));
+                inventory.BuySugarMath(amountToBuy);
             }
             else if (int.Parse(amountToBuy) == 20)
             {
-                Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(1.73));
-                BuySugarMath();
+                Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(Convert.ToDecimal(1.73)));
+                    inventory.BuySugarMath(amountToBuy);
             }
             else if (int.Parse(amountToBuy) == 48)
             {
-                Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(3.42));
-                BuySugarMath();
+                Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(Convert.ToDecimal(3.42)));
+                    inventory.BuySugarMath(amountToBuy);
             }
             else
             {
                 Console.WriteLine("Invalid Entry Try Again.");
-                BuyMoreItems();
             }
-
-            BuyMoreItems();
 
         }
 
-        public void BuyIce()
+        public void BuyIce(Player player, Inventory inventory)
         {
             Console.WriteLine("How many ice cubes would you like to buy? \n 100 for 75¢ \n 250 for $2.11 \n 500 for $3.69?");
             amountToBuy = Console.ReadLine().ToLower();
 
             if (int.Parse(amountToBuy) == 100)
             {
-                Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(0.75));
-                BuyIceMath();
+                Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(Convert.ToDecimal(0.75)));
+                inventory.BuyIceMath(amountToBuy);
+
+
             }
             else if (int.Parse(amountToBuy) == 250)
             {
-                Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(2.11));
-                BuyIceMath();
+                Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(Convert.ToDecimal(2.11)));
+                inventory.BuyIceMath(amountToBuy);
             }
             else if (int.Parse(amountToBuy) == 500)
             {
-                Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(3.96));
-                BuyIceMath();
+                Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(Convert.ToDecimal(3.96)));
+                inventory.BuyIceMath(amountToBuy);
             }
             else
             {
                 Console.WriteLine("Invalid Entry Try Again.");
-                BuyMoreItems();
             }
-
-            BuyMoreItems();
-
-        }
-
-        public void BuyLemonsMath()
-        {
-            for (int i = 0; i < int.Parse(amountToBuy); i++)
-            {
-                Lemon lemon = new Lemon();
-                inventory.lemons.Add(lemon);
-            }
-
-            Console.WriteLine("You now have " + inventory.lemons.Count + " lemons");
         }
 
 
-        public void BuySugarMath()
-        {
-            for (int i = 0; i < int.Parse(amountToBuy); i++)
-            {
-                Sugar sugar = new Sugar();
-                inventory.sugar.Add(sugar);
-            }
-            Console.WriteLine("You now have " + inventory.sugar.Count + " cups of sugar");
-        }
 
-        public void BuyIceMath()
-        {
-            for (int i = 0; i<int.Parse(amountToBuy); i++)
-            {
-                Ice ice = new Ice();
-                inventory.ice.Add(ice);
-            }
 
-            Console.WriteLine("You now have " + inventory.ice.Count + " cups of ice");
-        }
 
-        public void BuyCupsMath()
-        {
-            for (int i = 0; i < int.Parse(amountToBuy); i++)
-            {
-                Cups cups = new Cups();
-                inventory.cups.Add(cups);
-            }
 
-            Console.WriteLine("You now have " + inventory.cups.Count + " cups");
-            BuyMoreItems();
-        }
+
+      
 
     }
 }

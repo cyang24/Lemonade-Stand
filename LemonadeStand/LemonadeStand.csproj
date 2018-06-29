@@ -46,6 +46,7 @@
     <Compile Include="Inventory.cs" />
     <Compile Include="Wallet.cs" />
     <Compile Include="Recipe.cs" />
+    <Compile Include="UserInterface.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
