@@ -7,14 +7,14 @@ namespace LemonadeStand
     {   
         
         public List<Lemon> lemonsInventory;
-        public List<Sugar> sugarInventoery;
+        public List<Sugar> sugarInventory;
         public List<Ice> iceInventory;
         public List<Cups> cupsInventory;
 
         public Inventory()
         {
             lemonsInventory = new List<Lemon>();
-            sugarInventoery = new List<Sugar>();
+            sugarInventory = new List<Sugar>();
             iceInventory = new List<Ice>();
             cupsInventory = new List<Cups>();
         }
@@ -58,10 +58,12 @@ namespace LemonadeStand
             for (int i = 0; i < int.Parse(amountToBuy); i++)
             {
                 Sugar sugar = new Sugar();
-                sugarInventoery.Add(sugar);
+                sugarInventory.Add(sugar);
             }
-                Console.WriteLine("You now have " + sugarInventoery.Count + " cups of sugar");
+                Console.WriteLine("You now have " + sugarInventory.Count + " cups of sugar");
         }
+
+
     }
 
 }

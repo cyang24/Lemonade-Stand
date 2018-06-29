@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace LemonadeStand
 {
@@ -9,7 +10,6 @@ namespace LemonadeStand
         public int cupsToUse;
         public int iceToUse;
         public int sugarToUse;
-        Inventory inventory;
 
 
         public Recipe()
@@ -23,18 +23,54 @@ namespace LemonadeStand
         }
 
 
-        //public void UsedLemons(Inventory inventory)
-        //{
-        //    Console.WriteLine("You have " + inventory.lemons.Count + "How many lemons would you like you use?");
+        public void UsedCups(Inventory inventory)
+        {
+            Console.WriteLine("You have " + inventory.cupsInventory.Count + " cups. How many cups would you like you use?");
 
-        //    lemonsToUse = int.Parse(Console.ReadLine());
+            cupsToUse = int.Parse(Console.ReadLine());
 
-        //    for (int i = 0; i < lemonsToUse; i++)
-        //    {
+            for(int i = 0 ; i < cupsToUse; i++)
+            {
+                inventory.cupsInventory.RemoveAt(0);
+            }
+        }
 
-        //        inventory.lemons.RemoveAt(i);
-        //    }
-        //}
+        public void UsedLemons(Inventory inventory)
+        {
+            Console.WriteLine("You have " + inventory.lemonsInventory.Count + " lemons. How many lemons would you like you use?");
+
+            lemonsToUse = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < lemonsToUse; i++)
+            {
+                inventory.lemonsInventory.RemoveAt(0);
+            }
+        }
+
+        public void UsedSugar(Inventory inventory)
+        {
+            Console.WriteLine("You have " + inventory.sugarInventory.Count + " cups of sugar. How many cups would you like you use?");
+
+            sugarToUse = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < sugarToUse; i++)
+            {
+                inventory.sugarInventory.RemoveAt(0);
+            }
+        }
+
+        public void UsedIce(Inventory inventory)
+        {
+            Console.WriteLine("You have " + inventory.iceInventory.Count + " ice cubes. How many ice cubes would you like you use per cup?");
+
+            iceToUse = int.Parse(Console.ReadLine());
+
+            for (int i = 0; i < iceToUse; i++)
+            {
+                inventory.iceInventory.RemoveAt(0);
+            }
+        }
+
     }   
 
 

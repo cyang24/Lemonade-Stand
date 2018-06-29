@@ -2,9 +2,37 @@
 namespace LemonadeStand
 {
     public class UserInterface
-    {
+    {   
+
+
         public UserInterface()
         {
+
+        }
+
+        public void CheckBalanceCheckInventoryGoToStore(Player player, Inventory inventory, Store store)
+        {
+            Console.WriteLine("What would you like to do?\na) Check Balance\nb) Check Inventory\nc) Go To Store\n");
+            string userInput = Console.ReadLine();
+
+            switch (userInput)
+            {
+                case "a":
+                    DisplayBalance(player);
+                    break;
+
+                case "b":
+                    DisplayInventory(inventory);
+                    break;
+
+                case "c":
+                    store.PromptToBuy(player, inventory);
+                    break;
+                default:
+                    Console.WriteLine("Invalid Entry Try Again.");
+                    CheckBalanceCheckInventoryGoToStore(player, inventory, store);
+                    break;
+            }
 
         }
 
@@ -18,21 +46,7 @@ namespace LemonadeStand
             Console.WriteLine($"\nCurrent Inventory:\ncups: {inventory.cupsInventory.Count} \nlemons: {inventory.lemonsInventory.Count} \nsugar: { inventory.sugarInventoery.Count} \nice cubes: { inventory.iceInventory.Count}\n\n");
         }
 
-        public void PromptToBuy(Store store, Player player, Inventory inventory)
-        {
-            Console.WriteLine("Would you like to buy something Yes or No");
-            string buyMore = Console.ReadLine().ToLower();
 
-            switch (buyMore)
-            {
-                case "yes":
-                store.BuyForInventory(player, inventory);
-                break;
-
-            case "no":
-                break;
-            }
-        }
 
     }
 }

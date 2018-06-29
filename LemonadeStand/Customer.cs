@@ -6,21 +6,28 @@ namespace LemonadeStand
     public class Customer : Day_Weather
     {
         public bool chanceToBuy = false;
-        Player player = new Player();
-
-
+        public double customerPriceRanking;
+        public double customerWeatherRanking;
 
         public Customer()
         {
+            CustomerPriceRating();
+            CustomerWeatherRating();
             
         }
 
-        public void CustomerWillBuy()
+        public void CustomerPriceRating()
         {
-            CalculateTodaysForecast();
-            CalculateTodaysTemperature();
-            player.LemonadePriceRank();
+            customerPriceRanking = rnd.Next(0,1);
+        }
 
+        public void CustomerWeatherRating()
+        {
+            customerWeatherRanking = rnd.Next(60,99);
+        }
+
+        public void CustomerWillBuy(Player player)
+        {
             if (todaysForecast.ToLower() == "sunny")
             {
                 if (TodaysTemperature >= 60 && TodaysTemperature <= 99)
@@ -79,7 +86,7 @@ namespace LemonadeStand
                 {
                     chanceToBuy = false;
                 }
-            }
+            } //need if true add to wallet statement
 
         }
 

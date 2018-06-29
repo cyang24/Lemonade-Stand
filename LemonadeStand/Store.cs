@@ -7,7 +7,7 @@ namespace LemonadeStand
     {   
         public decimal itemCost;
         public string amountToBuy;
-        UserInterface Interface = new UserInterface();
+        UserInterface userInterface = new UserInterface();
 
 
         public Store()
@@ -17,10 +17,10 @@ namespace LemonadeStand
         public void BuyForInventory(Player player, Inventory inventory)
         {
             Console.WriteLine("\nWhat would you like to purchase? \na) cups \nb) lemons \nc) sugar \nd) ice\n");
-            string userIput = Console.ReadLine();
+            string userInput = Console.ReadLine();
 
 
-            switch (userIput)
+            switch (userInput)
             {
                 case "a":
                     BuyCups(player, inventory);
@@ -80,16 +80,19 @@ namespace LemonadeStand
             {
                 Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(Convert.ToDecimal(0.96)));
                 inventory.BuyLemonsMath(amountToBuy);
+                PromptToBuy(player, inventory);
             }
             else if (int.Parse(amountToBuy) == 30)
             {
                 Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(Convert.ToDecimal(2.39)));
                 inventory.BuyLemonsMath(amountToBuy);
+                PromptToBuy(player, inventory);
             }
             else if (int.Parse(amountToBuy) == 75)
             {
                 Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(Convert.ToDecimal(4.43)));
                 inventory.BuyLemonsMath(amountToBuy);
+                PromptToBuy(player, inventory);
             }
             else{
                Console.WriteLine("Invalid Entry Try Again.");
@@ -132,6 +135,7 @@ namespace LemonadeStand
             {
                 Console.WriteLine("Your current balance is " + "$" + player.wallet.SubtractToWallet(Convert.ToDecimal(0.75)));
                 inventory.BuyIceMath(amountToBuy);
+                PromptToBuy(player, inventory);
 
 
             }
@@ -148,6 +152,22 @@ namespace LemonadeStand
             else
             {
                 Console.WriteLine("Invalid Entry Try Again.");
+            }
+        }
+
+        public void PromptToBuy(Player player, Inventory inventory)
+        {
+            Console.WriteLine("Would you like to buy something Yes or No");
+            string buyMore = Console.ReadLine().ToLower();
+
+            switch (buyMore)
+            {
+                case "yes":
+                    BuyForInventory(player, inventory);
+                    break;
+
+                case "no":
+                    break;
             }
         }
 

@@ -8,7 +8,7 @@ namespace LemonadeStand
         
         public Wallet wallet = new Wallet();
         public Inventory inventory = new Inventory();
-        public Recipe recipe;
+        public Recipe recipe = new Recipe();
         private string playerName = (Console.ReadLine());
         private decimal lemonadePrice;
         public int lemonadeRank;
@@ -29,22 +29,13 @@ namespace LemonadeStand
 
         }
 
-        protected int recipeRating;
-
-        public int RecipeRating
-        {
-            get { return recipeRating; }
-            set { recipeRating = value; }
-        }
-
-
         public Player()
         {
 
 
         }
 
-        public void SetPrice_Recipe()
+        public void SetLemonadePrice()
         {
             Console.WriteLine("What price would you like to sell your lemonade at?\n");
 

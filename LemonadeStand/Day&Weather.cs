@@ -6,14 +6,12 @@ namespace LemonadeStand
     public class Day_Weather
     {
         private int daysCount;
-        private int daileyHours;
         private int todaysTemperature; //API goes here?
         public string todaysForecast;
-       
+        public List<Customer> dailyCustomers;
 
-
-
-        Random rnd = new Random();
+      
+        public Random rnd = new Random();
 
         public int TodaysTemperature
         {
@@ -32,10 +30,7 @@ namespace LemonadeStand
         {
             CalculateTodaysForecast();
             CalculateTodaysTemperature();
-            Console.WriteLine("Today's Forcast is " + todaysForecast + " with a high of " + todaysTemperature + " degrees");
-            Customer customers = new Customer();
-            customers.CustomerWillBuy();
-
+            Console.WriteLine("Today's Forecast is " + todaysForecast + " with a high of " + todaysTemperature + " degrees");
         }
 
         public void CalculateTodaysTemperature()
@@ -77,10 +72,10 @@ namespace LemonadeStand
         //{
         //    int numberOfCustomers = rnd.Next(70, 120);
 
-        //    for (int i = 0; i<numberOfCustomers; i++)
+        //    for (int i = 0; i < numberOfCustomers; i++)
         //    {
         //        Customer customer = new Customer();
-        //        customer.Add(rnd);
+        //        dailyCustomers.Add(customer);
         //    }
 
         //}
