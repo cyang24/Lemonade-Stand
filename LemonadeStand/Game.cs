@@ -27,7 +27,7 @@ namespace LemonadeStand
             Console.WriteLine(day_Weather.dailyCustomers);
             //userInterface.DisplayInventory();
             //Console.WriteLine("All set " + player.PlayerName + "\nLet's go make some Lemonade\n\n");
-            player.recipe.UsedLemons(player.inventory);
+            player.recipe.MakeRecipe(player.inventory);
             userInterface.DisplayInventory(player.inventory);
             //Day_Weather weather = new Day_Weather();
             //player.SetPrice_Recipe();

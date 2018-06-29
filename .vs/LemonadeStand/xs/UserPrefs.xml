@@ -1,16 +1,17 @@
 ﻿<Properties StartupConfiguration="{DA3A84AD-267A-4A36-A1EA-E5A6E82282C3}|Default">
   <MonoDevelop.Ide.ItemProperties.LemonadeStand PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="LemonadeStand/Customer.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="LemonadeStand/Wallet.cs">
     <Files>
       <File FileName="LemonadeStand/Program.cs" Line="11" Column="29" />
-      <File FileName="LemonadeStand/Game.cs" Line="27" Column="59" />
-      <File FileName="LemonadeStand/Player.cs" Line="5" Column="2" />
-      <File FileName="LemonadeStand/Inventory.cs" Line="25" Column="1" />
-      <File FileName="LemonadeStand/Store.cs" Line="172" Column="1" />
-      <File FileName="LemonadeStand/Recipe.cs" Line="26" Column="52" />
-      <File FileName="LemonadeStand/UserInterface.cs" Line="19" Column="1" />
-      <File FileName="LemonadeStand/Customer.cs" Line="29" Column="51" />
-      <File FileName="LemonadeStand/Day&amp;Weather.cs" Line="14" Column="42" />
+      <File FileName="LemonadeStand/Game.cs" Line="19" Column="29" />
+      <File FileName="LemonadeStand/Player.cs" Line="23" Column="10" />
+      <File FileName="LemonadeStand/Inventory.cs" Line="67" Column="6" />
+      <File FileName="LemonadeStand/Store.cs" Line="23" Column="31" />
+      <File FileName="LemonadeStand/Recipe.cs" Line="35" Column="10" />
+      <File FileName="LemonadeStand/UserInterface.cs" Line="36" Column="27" />
+      <File FileName="LemonadeStand/Customer.cs" Line="92" Column="37" />
+      <File FileName="LemonadeStand/Day&amp;Weather.cs" Line="72" Column="12" />
+      <File FileName="LemonadeStand/Wallet.cs" Line="20" Column="44" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />

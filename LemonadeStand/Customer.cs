@@ -18,7 +18,7 @@ namespace LemonadeStand
 
         public void CustomerPriceRating()
         {
-            customerPriceRanking = rnd.Next(0,1);
+            customerPriceRanking = rnd.Next(0,5);
         }
 
         public void CustomerWeatherRating()
@@ -30,9 +30,9 @@ namespace LemonadeStand
         {
             if (todaysForecast.ToLower() == "sunny")
             {
-                if (TodaysTemperature >= 60 && TodaysTemperature <= 99)
+                if (TodaysTemperature >= 60 && customerWeatherRanking >= 60)
                 {   
-                    if (player.lemonadeRank >= 0)
+                    if (customerPriceRanking >= 0  && player.lemonadeRank >=0 )
                     {
                         chanceToBuy = true;
                     }
@@ -41,9 +41,9 @@ namespace LemonadeStand
             }
             else if (todaysForecast.ToLower() == "partly cloudy")
             {
-                if (TodaysTemperature >= 75 && TodaysTemperature <= 99)
+                if (TodaysTemperature >= 75 && customerWeatherRanking >= 75)
                 {   
-                    if (player.lemonadeRank >= 0 )
+                    if (customerPriceRanking >= 0 && player.lemonadeRank >= 0 )
                     {
                         chanceToBuy = true; 
                     }
@@ -57,9 +57,9 @@ namespace LemonadeStand
             }
             else if (todaysForecast.ToLower() == "overcast")
             {
-                if (TodaysTemperature >= 80 && TodaysTemperature <= 99)
+                if (TodaysTemperature >= 80 && customerWeatherRanking >= 80)
                 {   
-                    if (player.lemonadeRank <= 2)
+                    if (customerPriceRanking <= 2 && player.lemonadeRank >= 2)
                     {
                         chanceToBuy = true;
                     }
@@ -73,9 +73,9 @@ namespace LemonadeStand
 
             else if (todaysForecast.ToLower() == "rainy")
             {
-                if (TodaysTemperature >= 90 && TodaysTemperature <= 99)
+                if (TodaysTemperature >= 90 && customerWeatherRanking >= 90)
                 {   
-                    if (player.lemonadeRank <= 1)
+                    if (customerPriceRanking <= 1 && player.lemonadeRank >= 1)
                     {
                         chanceToBuy = true;
                     }
@@ -86,7 +86,15 @@ namespace LemonadeStand
                 {
                     chanceToBuy = false;
                 }
-            } //need if true add to wallet statement
+            } 
+
+
+            //add to wallet statement
+
+            if (chanceToBuy == true)
+            {
+                player.wallet.AddToWallet(player.LemonadePrice);
+            }
 
         }
 

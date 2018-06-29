@@ -12,21 +12,27 @@ namespace LemonadeStand
 
         public void CheckBalanceCheckInventoryGoToStore(Player player, Inventory inventory, Store store)
         {
-            Console.WriteLine("What would you like to do?\na) Check Balance\nb) Check Inventory\nc) Go To Store\n");
+            Console.WriteLine("What would you like to do?\na) Check Balance\nb) Check Inventory\nc) Go To Store\nd) exit");
             string userInput = Console.ReadLine();
 
             switch (userInput)
             {
                 case "a":
                     DisplayBalance(player);
+                    CheckBalanceCheckInventoryGoToStore(player, inventory, store);
                     break;
 
                 case "b":
                     DisplayInventory(inventory);
+                    CheckBalanceCheckInventoryGoToStore(player, inventory, store);
                     break;
 
                 case "c":
                     store.PromptToBuy(player, inventory);
+                    CheckBalanceCheckInventoryGoToStore(player, inventory, store);
+                    break;
+                case "d":
+                    player.recipe.MakeRecipe(inventory);
                     break;
                 default:
                     Console.WriteLine("Invalid Entry Try Again.");
@@ -43,7 +49,7 @@ namespace LemonadeStand
 
         public void DisplayInventory(Inventory inventory)
         {            
-            Console.WriteLine($"\nCurrent Inventory:\ncups: {inventory.cupsInventory.Count} \nlemons: {inventory.lemonsInventory.Count} \nsugar: { inventory.sugarInventoery.Count} \nice cubes: { inventory.iceInventory.Count}\n\n");
+            Console.WriteLine($"\nCurrent Inventory:\ncups: {inventory.cupsInventory.Count} \nlemons: {inventory.lemonsInventory.Count} \nsugar: { inventory.sugarInventory.Count} \nice cubes: { inventory.iceInventory.Count}\n\n");
         }
 
 

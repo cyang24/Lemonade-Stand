@@ -17,9 +17,17 @@ namespace LemonadeStand
 
         }
 
-        public void MakeRecipe()
-        {
-            Console.WriteLine($"Your Current Recipe is: \nCups {cupsToUse} \nLemons {lemonsToUse } \nSugar {sugarToUse} \nIce {iceToUse}\n");
+        public void MakeRecipe(Inventory inventory)
+        {   
+            Console.WriteLine("Let's make some lemonade!\n");
+            
+            UsedCups(inventory);
+            UsedLemons(inventory);
+            UsedSugar(inventory);
+            UsedIce(inventory);
+
+            Console.WriteLine($"\nYour Current Recipe is: \nCups {cupsToUse} \nLemons {lemonsToUse } \nSugar {sugarToUse} \nIce {iceToUse}\n");
+
         }
 
 
