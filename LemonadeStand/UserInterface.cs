@@ -12,27 +12,31 @@ namespace LemonadeStand
 
         public void CheckBalanceCheckInventoryGoToStore(Player player, Inventory inventory, Store store)
         {
-            Console.WriteLine("What would you like to do?\na) Check Balance\nb) Check Inventory\nc) Go To Store\nd) exit");
+            Console.WriteLine("\nWhat would you like to do" + player.PlayerName + "?\na) Check Balance\nb) Check Inventory\nc) Go To Store\nd) Make Lemonade\ne) Exit\n");
             string userInput = Console.ReadLine();
 
             switch (userInput)
             {
                 case "a":
+                    Console.Clear();
                     DisplayBalance(player);
                     CheckBalanceCheckInventoryGoToStore(player, inventory, store);
                     break;
-
                 case "b":
+                    Console.Clear();
                     DisplayInventory(inventory);
                     CheckBalanceCheckInventoryGoToStore(player, inventory, store);
                     break;
-
                 case "c":
-                    store.PromptToBuy(player, inventory);
+                    Console.Clear();
+                    store.BuyForInventory(player,inventory);
                     CheckBalanceCheckInventoryGoToStore(player, inventory, store);
                     break;
                 case "d":
+                    Console.Clear();
                     player.recipe.MakeRecipe(inventory);
+                    break;
+                case "e":
                     break;
                 default:
                     Console.WriteLine("Invalid Entry Try Again.");

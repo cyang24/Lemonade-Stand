@@ -40,7 +40,6 @@ namespace LemonadeStand
             Console.WriteLine("What price would you like to sell your lemonade at?\n");
 
             LemonadePrice = Convert.ToDecimal(Console.ReadLine());
-            Console.WriteLine("$" + LemonadePrice);
         }
 
         public void LemonadePriceRank()
