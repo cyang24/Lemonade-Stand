@@ -52,7 +52,7 @@ namespace LemonadeStand
                 Console.WriteLine("Ouch! Looks like you didn't make any money.");
             }
             else 
-            Console.WriteLine("After 7 Days You Made " + player.wallet.PlayerMoney);
+                Console.WriteLine("After 7 Days You Made $" + (player.wallet.PlayerMoney - Convert.ToDecimal(20)));
 
             PlayAgain();
         }
