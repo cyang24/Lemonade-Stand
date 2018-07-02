@@ -7,15 +7,18 @@ namespace LemonadeStand
     {
         public Random rnd = new Random();
         private int percentChanceToBuy;
+
         public int PercentChanceToBuy
         {
             get { return percentChanceToBuy; }
             set { percentChanceToBuy = value; }
+
         }
 
         public Customer()
         {
-            PercentChanceToBuy = PercentChanceToBuy;
+            PercentChanceToBuy = rnd.Next(0,99);
         }
+
     }
 }

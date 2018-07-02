@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+
 
 namespace LemonadeStand
 {
@@ -12,7 +12,8 @@ namespace LemonadeStand
         public List<Customer> customersThatBought;
         public Customer customer;
         public Random rnd = new Random();
-        public int totalBought;
+        public double totalBought;
+        public int currentDay = 1;
 
         public int TodaysTemperature
         {
@@ -66,12 +67,14 @@ namespace LemonadeStand
         {   
             customer = new Customer();
             thirstyCustomers = new List<Customer>();
-            customersThatBought = new List<Customer>();
             GenerateCustomerConditions(); // creates number of customers
+            Console.WriteLine("You have " + thirstyCustomers.Count + " potential customers today!");
             ChanceBasedOnWeather(); // creates weather condition chances
             ChanceBasedOnPrice(player); // creates price chances
             ChanceBasedOnTemperature(); // creates temperature chances
-            DailyTotalResults(player); // displays player daily totals
+            CustomersWillBuy(player);
+            CupsSold(player);
+            DailyTotalResults(player);
             ResetCustomers(); //resets customer count
         }
 
@@ -104,47 +107,46 @@ namespace LemonadeStand
 
         public void ChanceBasedOnWeather()
         {
-            
             if (todaysForecast == "sunny")
             {
-                customer.PercentChanceToBuy = rnd.Next(75, 100);
+                customer.PercentChanceToBuy += rnd.Next(0, 20);
             }
             else if (todaysForecast == "partly cloudy")
             {
-                customer.PercentChanceToBuy = rnd.Next(70, 75);
+                customer.PercentChanceToBuy += rnd.Next(0, 15);
             }
             else if (todaysForecast == "Overcast")
             {
-                customer.PercentChanceToBuy = rnd.Next(50, 65);
+                customer.PercentChanceToBuy += rnd.Next(0, 5);
             }
             else if (todaysForecast == "Rainy")
             {
-                customer.PercentChanceToBuy = rnd.Next(30, 40);
+                customer.PercentChanceToBuy -= rnd.Next(0, 30);
             }
-            
+
         }
 
         public void ChanceBasedOnPrice(Player player)
         {
             if (player.lemonadeRank == 0)
             {
-                customer.PercentChanceToBuy = rnd.Next(75, 100);
+                customer.PercentChanceToBuy += rnd.Next(0, 20);
             }
             else if (player.lemonadeRank == 1)
             {
-                customer.PercentChanceToBuy = rnd.Next(70, 75);
+                customer.PercentChanceToBuy += rnd.Next(0, 10);
             }
             else if (player.lemonadeRank == 2)
             {
-                customer.PercentChanceToBuy = rnd.Next(50, 65);
+                customer.PercentChanceToBuy += rnd.Next(0, 5);
             }
             else if (player.lemonadeRank == 3)
             {
-                customer.PercentChanceToBuy = rnd.Next(30, 40);
+                customer.PercentChanceToBuy -= rnd.Next(0,2);
             }
             else if (player.lemonadeRank == 4)
             {
-                customer.PercentChanceToBuy = rnd.Next(0, 25);
+                customer.PercentChanceToBuy -= rnd.Next(0, 35);
             }
         }
 
@@ -152,50 +154,61 @@ namespace LemonadeStand
         {
             if (TodaysTemperature >= 90)
             {
-                customer.PercentChanceToBuy = rnd.Next(75, 100);
+                customer.PercentChanceToBuy += rnd.Next(0, 20);
             }
             else if (TodaysTemperature >= 80 && TodaysTemperature <= 90)
             {
-                customer.PercentChanceToBuy = rnd.Next(70, 75);
+                customer.PercentChanceToBuy += rnd.Next(0, 15);
             }
             else if (TodaysTemperature >= 70 && TodaysTemperature <= 80)
             {
-                customer.PercentChanceToBuy = rnd.Next(50, 65);
+                customer.PercentChanceToBuy += rnd.Next(0, 10);
             }
             else if (TodaysTemperature >= 60 && TodaysTemperature <= 70)
             {
-                customer.PercentChanceToBuy = rnd.Next(30, 40);
+                customer.PercentChanceToBuy += rnd.Next(0, 5);
             }
             else if (TodaysTemperature >= 50 && TodaysTemperature <= 60)
             {
-                customer.PercentChanceToBuy = rnd.Next(0, 25);
+                customer.PercentChanceToBuy -= 30;
             }
+
         }
 
-        public void CustomersWillBuy()
+        public void CustomersWillBuy(Player player)
         {
-            if (customer.PercentChanceToBuy >= 50)
+            for (int i = 0; i < thirstyCustomers.Count; i++)
             {
-                totalBought = customersThatBought.Count;
+                if (thirstyCustomers[i].PercentChanceToBuy < 49)
+                {
+                    thirstyCustomers.RemoveAt(i);
+                }
             }
-        }
+         }
 
         public void DailyTotalResults(Player player)
         {
-            Console.WriteLine("Today you made " + (player.LemonadePrice * customersThatBought.Count) + ".");
-            player.wallet.AddToWallet(player.LemonadePrice * customersThatBought.Count);
+            Console.WriteLine("After" + "Day1" + " you sold " + totalBought + " cups and made " + (player.LemonadePrice * thirstyCustomers.Count) + ".");
+            player.wallet.AddToWallet(player.LemonadePrice * Convert.ToDecimal(totalBought));
         }
 
         public void ResetCustomers()
         {
-            if (thirstyCustomers.Count() > 0)
-            {
-                for (int i = 0; i < thirstyCustomers.Count; i++)
-                {
-                    thirstyCustomers.RemoveAt(0);
-                }
-            }
+            thirstyCustomers.Clear();
         }
 
-    }
+        public void CupsSold(Player player)
+        {
+            if (player.recipe.cupsToUse < thirstyCustomers.Count)
+            {
+                totalBought = player.recipe.cupsToUse;
+            }
+            else if (player.recipe.cupsToUse > thirstyCustomers.Count)
+            {
+                totalBought = thirstyCustomers.Count;
+            }
+
+        }
+
+    }   
 } 

@@ -46,7 +46,7 @@ namespace LemonadeStand
 
         public void BuyCups(Player player, Inventory inventory)
         {
-            Console.WriteLine("\nHow many cups would you like to buy? \n 25 for 82¢ \n 50 for $1.54 \n 100 for $2.88?");
+            Console.WriteLine("\nHow many cups would you like to buy? \n25) for 82¢ \n50) for $1.54 \n100) for $2.88?");
             amountToBuy = Console.ReadLine();
 
             if (int.Parse(amountToBuy) == 25)
@@ -76,7 +76,7 @@ namespace LemonadeStand
 
         public void BuyLemons(Player player, Inventory inventory)
         {
-            Console.WriteLine("\nHow many lemons would you like to buy? \n 10 for 96¢ \n 30 for $2.39 \n 75 for $4.43?");
+            Console.WriteLine("\nHow many lemons would you like to buy? \n10) for 96¢ \n30) for $2.39 \n75) for $4.43?");
             amountToBuy = Console.ReadLine();
 
             if (int.Parse(amountToBuy) == 10)
@@ -104,7 +104,7 @@ namespace LemonadeStand
 
         public void BuySugar(Player player, Inventory inventory)
         {
-            Console.WriteLine("\nHow much sugar would you like to buy? \n 8 cups for 60¢ \n 20 cups for $1.73 \n 48 cups for $3.42?");
+            Console.WriteLine("\nHow much sugar would you like to buy? \n8) cups for 60¢ \n20) cups for $1.73 \n48) cups for $3.42?");
             amountToBuy = Console.ReadLine().ToLower();
 
             if (int.Parse(amountToBuy) == 8)
@@ -134,7 +134,7 @@ namespace LemonadeStand
 
         public void BuyIce(Player player, Inventory inventory)
         {
-            Console.WriteLine("\nHow many ice cubes would you like to buy? \n 100 for 75¢ \n 250 for $2.11 \n 500 for $3.69?");
+            Console.WriteLine("\nHow many ice cubes would you like to buy? \n100) for 75¢ \n250) for $2.11 \n500) for $3.69?");
             amountToBuy = Console.ReadLine().ToLower();
 
             if (int.Parse(amountToBuy) == 100)

@@ -1,7 +1,7 @@
 ﻿using System;
 namespace LemonadeStand
 {
-    public class Wallet
+    public class Wallet ////SOLID DESIGN PRINCIPAL - "S" Wallet Keeps track of funds and contains 2 methods one to add and one to subtract.
 
     {   private decimal playerMoney = 20;
 
@@ -15,7 +15,7 @@ namespace LemonadeStand
         {
         }
 
-        public decimal AddToWallet(decimal itemsSold)
+        public decimal AddToWallet(decimal itemsSold) 
         {
             PlayerMoney = PlayerMoney + itemsSold;
 
@@ -25,10 +25,15 @@ namespace LemonadeStand
 
         public decimal SubtractToWallet(decimal itemCost)
         {
-            PlayerMoney = PlayerMoney - itemCost;
-
+            if (itemCost < PlayerMoney)
+            {
+                PlayerMoney = PlayerMoney - itemCost;
+            }
+            else if (itemCost > PlayerMoney)
+            {
+                Console.WriteLine("Sorry not enough money!!");
+            }
             return PlayerMoney;
-
         }
     }   
 

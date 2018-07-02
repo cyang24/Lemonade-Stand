@@ -4,6 +4,9 @@ namespace LemonadeStand
 {
     public class Game 
     {
+        Player player;
+        public int currentDay = 1;
+        Recipe recipe;
 
         public Game()
         {
@@ -12,26 +15,33 @@ namespace LemonadeStand
 
         public void RunGame()
         {
-            //Console.WriteLine("\nWhat is your lemonade stands name?\n");
-            Player player = new Player();
-            //Console.WriteLine("Good Luck " + player.PlayerName);
-            //Console.WriteLine("Let's Get Started!!");
-            //Console.Clear();
+            Console.WriteLine("\nWhat is your lemonade stands name?\n");
+            player = new Player();
+            Console.WriteLine("Good Luck " + player.PlayerName);
+            Console.WriteLine("Let's Get Started!!");
             UserInterface userInterface = new UserInterface();
+            Inventory inventory = new Inventory();
+            recipe = new Recipe();
             Store store = new Store();
-            //Console.Clear();
-            userInterface.CheckBalanceCheckInventoryGoToStore(player, player.inventory, store);
-            player.SetLemonadePrice();
-            Day_Weather day_Weather = new Day_Weather();
-            //day_Weather.DailyListOfCustomer();
-            Console.WriteLine(day_Weather.thirstyCustomers);
-            //userInterface.DisplayInventory();
-            //Console.WriteLine("All set " + player.PlayerName + "\nLet's go make some Lemonade\n\n");
-            //player.recipe.MakeRecipe(player.inventory);
-            //userInterface.DisplayInventory(player.inventory);
-            //Day_Weather weather = new Day_Weather();
+            userInterface.CheckBalanceCheckInventoryGoToStore(player, inventory, store);
+            GameLoopSevenDays(userInterface, store, inventory,recipe);
+            userInterface.DisplayInventory(inventory);
+                       
+        }
 
+        public void GameLoopSevenDays(UserInterface userInterface, Store store, Inventory inventory, Recipe recipe)
+        {
+            do
+            {
+                Day_Weather day_Weather = new Day_Weather();
+                player.SetLemonadePrice();
+                day_Weather.DailyCustomerResults(player);
+                player.inventory.UsedTotalAfterOneDay(recipe, day_Weather);
+                userInterface.CheckBalanceCheckInventoryGoToStore(player, inventory, store);
+                currentDay += 1;
+            }
 
+            while (currentDay < 8);
 
         }
     }
