@@ -6,14 +6,14 @@ namespace LemonadeStand
 {
     public class Day_Weather
     {
-        private int todaysTemperature; //API goes here?
+        private int todaysTemperature;
         public string todaysForecast;
         public List<Customer> thirstyCustomers;
         public List<Customer> customersThatBought;
         public Customer customer;
         public Random rnd = new Random();
         public double totalBought;
-        public int currentDay = 1;
+
 
         public int TodaysTemperature
         {
@@ -63,7 +63,7 @@ namespace LemonadeStand
         }
 
 
-        public void DailyCustomerResults(Player player)
+        public void DailyCustomerResults(Player player, Recipe recipe, Day_Weather day_Weather)
         {   
             customer = new Customer();
             thirstyCustomers = new List<Customer>();
@@ -75,6 +75,7 @@ namespace LemonadeStand
             CustomersWillBuy(player);
             CupsSold(player);
             DailyTotalResults(player);
+            player.inventory.UsedTotalAfterOneDay(recipe, day_Weather);
             ResetCustomers(); //resets customer count
         }
 
@@ -188,7 +189,7 @@ namespace LemonadeStand
 
         public void DailyTotalResults(Player player)
         {
-            Console.WriteLine("After" + "Day1" + " you sold " + totalBought + " cups and made " + (player.LemonadePrice * thirstyCustomers.Count) + ".");
+            Console.WriteLine("After Today" + " you sold " + totalBought + " cups and made " + (player.LemonadePrice * thirstyCustomers.Count) + ".");
             player.wallet.AddToWallet(player.LemonadePrice * Convert.ToDecimal(totalBought));
         }
 
@@ -209,6 +210,5 @@ namespace LemonadeStand
             }
 
         }
-
     }   
 } 

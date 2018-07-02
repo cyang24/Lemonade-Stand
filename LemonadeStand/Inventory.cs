@@ -63,7 +63,7 @@ namespace LemonadeStand
                 Console.WriteLine("You now have " + sugarInventory.Count + " cups of sugar");
         }
 
-        public void UsedTotalAfterOneDay(Recipe recipe, Day_Weather day_Weather) //2 lemons 2 sugars = 1 cup
+        public void UsedTotalAfterOneDay(Recipe recipe, Day_Weather day_Weather)
         {
             if (recipe.cupsToUse > day_Weather.thirstyCustomers.Count)
             {

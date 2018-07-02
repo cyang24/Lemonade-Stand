@@ -171,6 +171,7 @@ namespace LemonadeStand
             switch (buyMore)
             {
                 case "yes":
+                    Console.Clear();
                     BuyForInventory(player, inventory);
                     break;
 
