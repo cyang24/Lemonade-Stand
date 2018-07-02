@@ -18,7 +18,7 @@ namespace LemonadeStand
 
         public void MakeRecipe(Inventory inventory, Player player, Store store)
         {
-            Console.WriteLine("Let's make some lemonade!\n");
+            Console.WriteLine("\nLet's make some lemonade!\n");
             
             UsedCups(inventory, player, store);
             UsedLemons(inventory, player, store);

@@ -149,6 +149,10 @@ namespace LemonadeStand
             {
                 customer.PercentChanceToBuy -= rnd.Next(0, 35);
             }
+            else if (player.lemonadeRank == 5)
+            {
+                customer.PercentChanceToBuy -= rnd.Next(35, 50);
+            }
         }
 
         public void ChanceBasedOnTemperature()
@@ -189,8 +193,15 @@ namespace LemonadeStand
 
         public void DailyTotalResults(Player player)
         {
-            Console.WriteLine("After Today" + " you sold " + totalBought + " cups and made " + (player.LemonadePrice * thirstyCustomers.Count) + ".");
-            player.wallet.AddToWallet(player.LemonadePrice * Convert.ToDecimal(totalBought));
+            if (totalBought <= 0)
+            {
+                Console.WriteLine("Today" + " you sold " + totalBought + " cups.");
+            }
+            else 
+            {
+                Console.WriteLine("After Today" + " you sold " + totalBought + " cups and made " + (player.LemonadePrice * thirstyCustomers.Count) + ".");
+                player.wallet.AddToWallet(player.LemonadePrice * Convert.ToDecimal(totalBought));
+            }
         }
 
         public void ResetCustomers()

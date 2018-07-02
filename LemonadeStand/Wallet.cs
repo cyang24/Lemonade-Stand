@@ -1,8 +1,7 @@
 ﻿using System;
 namespace LemonadeStand
 {
-    public class Wallet ////SOLID DESIGN PRINCIPAL - "S" Wallet Keeps track of funds and contains 2 methods one to add and one to subtract.
-
+    public class Wallet 
     {   private decimal playerMoney = 20;
 
         public decimal PlayerMoney

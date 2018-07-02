@@ -63,6 +63,10 @@ namespace LemonadeStand
             {
                 lemonadeRank = 4;
             }
+            else if (decimal.ToDouble(LemonadePrice) >= 1)
+            {
+                lemonadeRank = 5;
+            }
                
         }
     }

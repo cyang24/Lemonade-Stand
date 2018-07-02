@@ -7,6 +7,7 @@ namespace LemonadeStand
         Player player;
         Recipe recipe;
         public int currentDay = 1;
+        public bool playAgain = true;
 
         public Game()
         {
@@ -39,7 +40,6 @@ namespace LemonadeStand
                 day_Weather.DailyCustomerResults(player, inventory,recipe, day_Weather);
                 userInterface.DisplayInventory(inventory);
                 userInterface.CheckBalanceCheckInventoryGoToStore(player, inventory, store);
-                Console.WriteLine(currentDay);
                 currentDay += 1;
                 Console.WriteLine("It's Day " + currentDay);
 
@@ -47,6 +47,28 @@ namespace LemonadeStand
 
             while (currentDay < 8);
 
+            if (player.wallet.PlayerMoney < 0)
+            {
+                Console.WriteLine("Ouch! Looks like you didn't make any money.");
+            }
+            else 
+            Console.WriteLine("After 7 Days You Made " + player.wallet.PlayerMoney);
+
+            PlayAgain();
+        }
+
+        public void PlayAgain()
+        {
+            while (playAgain)
+            {
+                Console.WriteLine("\n");
+                Console.WriteLine("Would you like to play again? Y or N");
+                ConsoleKeyInfo cki = Console.ReadKey();
+                playAgain = cki.KeyChar == 'y';
+                Console.WriteLine("\n");
+                Console.Clear();
+                RunGame();
+            }
         }
     }
 }

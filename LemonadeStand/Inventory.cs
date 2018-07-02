@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LemonadeStand
 {
-    public class Inventory ////SOLID DESIGN PRINCIPAL - Single responsibilty to keep track of inventory and to add or subtract.
+    public class Inventory
     {   
         
         public List<Lemon> lemonsInventory;
