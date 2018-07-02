@@ -36,7 +36,7 @@ namespace LemonadeStand
             {
                 Day_Weather day_Weather = new Day_Weather();
                 player.SetLemonadePrice();
-                day_Weather.DailyCustomerResults(player,recipe, day_Weather);
+                day_Weather.DailyCustomerResults(player, inventory,recipe, day_Weather);
                 userInterface.DisplayInventory(inventory);
                 userInterface.CheckBalanceCheckInventoryGoToStore(player, inventory, store);
                 Console.WriteLine(currentDay);

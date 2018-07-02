@@ -63,7 +63,7 @@ namespace LemonadeStand
         }
 
 
-        public void DailyCustomerResults(Player player, Recipe recipe, Day_Weather day_Weather)
+        public void DailyCustomerResults(Player player, Inventory inventory, Recipe recipe, Day_Weather day_Weather)
         {   
             customer = new Customer();
             thirstyCustomers = new List<Customer>();
@@ -75,7 +75,7 @@ namespace LemonadeStand
             CustomersWillBuy(player);
             CupsSold(player);
             DailyTotalResults(player);
-            player.inventory.UsedTotalAfterOneDay(recipe, day_Weather);
+            player.recipe.UsedTotalAfterOneDay(player, inventory, day_Weather);
             ResetCustomers(); //resets customer count
         }
 

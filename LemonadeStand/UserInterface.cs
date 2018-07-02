@@ -39,6 +39,7 @@ namespace LemonadeStand
                 case "e":
                     break;
                 default:
+                    Console.Clear();
                     Console.WriteLine("Invalid Entry Try Again.");
                     CheckBalanceCheckInventoryGoToStore(player, inventory, store);
                     break;

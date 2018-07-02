@@ -11,7 +11,6 @@ namespace LemonadeStand
         public double iceToUse;
         public double sugarToUse;
         UserInterface userInterface = new UserInterface();
-
         public Recipe()
         {
 
@@ -56,7 +55,7 @@ namespace LemonadeStand
 
         public void UsedSugar(Inventory inventory, Player player, Store store)
         {
-            Console.WriteLine("You have " + inventory.sugarInventory.Count + " cups of sugar. How many cups would you like you use?");
+            Console.WriteLine("You have " + inventory.sugarInventory.Count + " cups of sugar. How sugar would you like you use?");
             sugarToUse = int.Parse(Console.ReadLine());
 
             if (sugarToUse < 0)
@@ -67,13 +66,67 @@ namespace LemonadeStand
 
         public void UsedIce(Inventory inventory, Player player, Store store)
         {
-            Console.WriteLine("You have " + inventory.iceInventory.Count + " ice cubes. How many ice cubes would you like you use per cup?");
+            Console.WriteLine("You have " + inventory.iceInventory.Count + " ice cubes. How many ice cubes would you like you use?");
             iceToUse = int.Parse(Console.ReadLine());
 
             if (iceToUse < 0)
             {
                 userInterface.NotEnoughMessage(player, inventory, store);
             }
+
+        }
+
+        public void UsedTotalAfterOneDay(Player player, Inventory inventory, Day_Weather day_Weather)
+        {
+            if (player.recipe.cupsToUse > day_Weather.thirstyCustomers.Count)
+            {
+                for (int i = 0; i < day_Weather.totalBought; i++)
+                {
+                    inventory.cupsInventory.RemoveAt(0);
+                }
+            }
+            else if (cupsToUse < day_Weather.thirstyCustomers.Count)
+                for (int i = 0; i < player.recipe.cupsToUse; i++)
+                {
+                    inventory.cupsInventory.RemoveAt(0);
+                }
+
+            //for Lemons
+            if (player.recipe.cupsToUse > day_Weather.thirstyCustomers.Count)
+            {
+                for (int i = 0; i < player.recipe.lemonsToUse; i++)
+                {
+                    inventory.lemonsInventory.RemoveAt(0);
+                }
+            }
+
+            else if (player.recipe.cupsToUse < day_Weather.thirstyCustomers.Count)
+                for (int i = 0; i < player.recipe.lemonsToUse; i++)
+                {
+                inventory.lemonsInventory.RemoveAt(0);
+                }
+
+            //for Sugar
+            if (player.recipe.cupsToUse > day_Weather.thirstyCustomers.Count)
+            {
+                for (int i = 0; i < player.recipe.sugarToUse; i++)
+                {
+                    inventory.sugarInventory.RemoveAt(0);
+                }
+            }
+
+            else if (player.recipe.cupsToUse < day_Weather.thirstyCustomers.Count)
+            {
+                for (int i = 0; i < player.recipe.sugarToUse; i++)
+                {
+                    inventory.sugarInventory.RemoveAt(0);
+                }
+            }
+
+            //for Ice
+
+            inventory.iceInventory.Clear();
+            Console.WriteLine("All your ice melted");
         }
 
     }   

@@ -63,59 +63,6 @@ namespace LemonadeStand
                 Console.WriteLine("You now have " + sugarInventory.Count + " cups of sugar");
         }
 
-        public void UsedTotalAfterOneDay(Recipe recipe, Day_Weather day_Weather)
-        {
-            if (recipe.cupsToUse > day_Weather.thirstyCustomers.Count)
-            {
-                for (int i = 0; i < day_Weather.totalBought; i++)
-                {
-                    cupsInventory.RemoveAt(0);
-                }
-            }
-            else if (recipe.cupsToUse < day_Weather.thirstyCustomers.Count)
-                for (int i = 0; i < recipe.cupsToUse; i++)
-                {
-                    cupsInventory.RemoveAt(0);
-                }
-
-            //for Lemons
-            if (recipe.cupsToUse > day_Weather.thirstyCustomers.Count)
-            {
-                for (int i = 0; i < recipe.lemonsToUse; i++)
-                {
-                    lemonsInventory.RemoveAt(0);
-                }
-            }
-
-            else if (recipe.cupsToUse < day_Weather.thirstyCustomers.Count)
-                for (int i = 0; i < recipe.lemonsToUse; i++)
-                {
-                    lemonsInventory.RemoveAt(0);
-                }
-
-            //for Sugar
-            if (recipe.cupsToUse > day_Weather.thirstyCustomers.Count)
-            {
-                for (int i = 0; i < recipe.sugarToUse; i++)
-                {
-                    sugarInventory.RemoveAt(0);
-                }
-            }
-
-            else if (recipe.cupsToUse < day_Weather.thirstyCustomers.Count)
-            {
-                for (int i = 0; i < recipe.sugarToUse; i++)
-                {
-                    sugarInventory.RemoveAt(0);
-                }
-            }
-
-            //for Ice
-
-            iceInventory.Clear();
-            Console.WriteLine("All your ice melted");
-        }
-
     }
 
 }

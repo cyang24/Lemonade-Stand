@@ -176,6 +176,7 @@ namespace LemonadeStand
                     break;
 
                 case "no":
+                    Console.Clear();
                     break;
             }
         }

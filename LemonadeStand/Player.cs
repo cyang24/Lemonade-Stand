@@ -7,7 +7,6 @@ namespace LemonadeStand
     {
         
         public Wallet wallet = new Wallet();
-        public Inventory inventory = new Inventory();
         public Recipe recipe = new Recipe();
         private string playerName = (Console.ReadLine());
         private decimal lemonadePrice;
